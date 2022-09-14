@@ -6,6 +6,7 @@ public class playerScript : MonoBehaviour
 {
     [SerializeField] private float move;
     [SerializeField] private int speed;
+    [SerializeField] private float jumpForce;
     Rigidbody2D rb;
     void Start()
     {
@@ -15,12 +16,21 @@ public class playerScript : MonoBehaviour
     void Update()
     {
         Movement();
+        Jump();
     }
 
     void Movement()
     {
         move = Input.GetAxisRaw("Horizontal");
         transform.position += new Vector3(move, 0, 0) * Time.deltaTime * speed;
+    }
+
+    void Jump()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        }
     }
 
     public void Die()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class gameManager : MonoBehaviour
 {
-    void Win()
+    public void Win()
     {
         Debug.Log("Yay!");
     }
